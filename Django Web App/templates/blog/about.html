@@ -1,0 +1,47 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <h2 class="article-title">About Page</h2>
+          <hr>
+            <p class="article-content"> ESPlantMonitoring aims to provide an easy way of monitoring multiple plants using standalone ESP devices. Data is sent via MQTT and stored. Realtime data can be accessed via an MQTT subscriber or near realtime data can be view using the web interface.
+
+                In order to use the service, you have to sign up. You can then use the registered credentials to access the MQTT server and the Web Interface.
+
+            </p>
+
+            <h2 class="article-title">Setup</h2>
+            <hr>
+            <p class="article-content"> Once registered you can setup devices.
+
+                Firstly, generate a unique key via the manage devices section.
+
+                Modify the source code with your credentials:
+                <ul class="glyphicon-list">
+                <li>mqttUser = account username</li>
+                <li>mqttPassword = account password</li>
+                <li>deviceID = unique key</li>
+                </ul>
+
+
+                Now compile the source code onto the device and you are ready to go.
+
+
+            </p>
+
+            <h2 class="article-title">Source Code</h2>
+            <hr>
+              <p class="article-content">Available soon</p>
+
+            <h2 class="article-title">Compatible Devices</h2>
+            <hr>
+            <ul>
+                <li>HiGrow ESP32</li>
+                <li>ESP8266 (soon)</li>
+            </ul>
+      </div>
+    </div>
+
+  </article>
+{% endblock content %}

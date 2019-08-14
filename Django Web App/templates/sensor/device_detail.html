@@ -1,0 +1,94 @@
+{% extends "dashboard/base.html" %}
+{% block content %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <h2 class="article-title">{{ object.device_id }}</h2>
+        <p class="article-content">{{ object.owner }}</p>
+      </div>
+
+        {% if object.owner == user %}
+          <div>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'device-delete' object.id %}">Delete</a>
+          </div>
+        {% endif %}
+    </div>
+
+  </article>
+
+
+    <div>
+            <canvas id="myChart" width="200" height="100"></canvas>
+            <script>
+                var dates = JSON.parse('{{ date|safe }}');
+                var temp = JSON.parse('{{ temp|safe}}');
+                var water = JSON.parse('{{ water|safe}}');
+                var humidity = JSON.parse('{{ humidity|safe}}');
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: dates,
+                        datasets: [{
+                            label: 'Temperature',
+                            fill: false,
+                            data: temp,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+
+                            ],
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Humidity',
+                            fill: false,
+                            data: humidity,
+                            backgroundColor: [
+                                'rgba(54, 162, 235, 0.2)',
+
+                            ],
+                            borderColor: [
+                                'rgba(54, 162, 235, 1)',
+                            ],
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Soil Moisture Levels',
+                            fill: false,
+                            data: water,
+                            backgroundColor: [
+                                'rgba(75, 192, 192, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgba(75, 192, 192, 1)',
+                            ],
+                            borderWidth: 1
+                        }
+
+                        ]
+                    },
+                    options: {
+                        pan: {
+                            enabled: true,
+                            mode: 'y',
+                         },
+                        zoom: {
+                            enabled: true,
+                            mode: "y"
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            </script>
+
+        </div>
+{% endblock content %}

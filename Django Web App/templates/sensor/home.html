@@ -1,0 +1,27 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <div>
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" >Manage Devices</a>
+            </div>
+              <a href="{% url 'sensor-generate' %}" class='btn btn-primary'>Generate New Key</a>
+          </div>
+        </article>
+    </div>
+
+     <div class="content-section">
+        <h3>Your Devices</h3>
+        <p>Select device to view/manage</p>
+         {% for device in devices %}
+        <article class="media content-section">
+          <div class="media-body">
+            <a class="article-title" href="{% url 'device-detail' device.id %}">{{ device.device_id }}</a>
+          </div>
+        </article>
+    {% endfor %}
+
+    </div>
+
+{% endblock content %}

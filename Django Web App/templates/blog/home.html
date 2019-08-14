@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+
+   <div class="jumbotron">
+  <h3 class="display-4">Welcome to ESPlantMonitoring</h3>
+       <hr>
+  <p class="lead">This website provides a platform to collect soil moisture, temperature and humidity data of plants using ESP microcontrollers via the MQTT protocol. </p>
+  <hr class="my-4">
+  <p>Find out how to use the platform below.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'blog-about' %}" role="button">Learn more</a>
+  </p>
+</div>
+
+{% endblock content %}
